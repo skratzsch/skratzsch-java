@@ -1,6 +1,5 @@
-package de.plain.java.patterns;
+package de.skratzsch.patterns.singleton;
 
-import de.skratzsch.patterns.SingletonService;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;

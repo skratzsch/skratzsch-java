@@ -1,4 +1,4 @@
-package de.skratzsch.patterns;
+package de.skratzsch.patterns.singleton;
 
 import java.io.IOException;
 import java.net.URI;

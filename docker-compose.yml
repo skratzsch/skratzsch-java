@@ -1,39 +1,35 @@
 version: '3.8'
-
 services:
-  mongodb:
-    image: mongodb/mongodb-community-server:latest
-    container_name: mongodb
-    restart: unless-stopped
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
-    volumes:
-      - mongodb_data:/data/db
-    ports:
-      - "27017:27017"
-    networks:
-      - db_network
-
   postgres:
-    image: postgres:latest
-    container_name: postgres
-    restart: unless-stopped
+    image: postgres:16.3
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: devdb
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      POSTGRES_DB: skratzsch
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     networks:
-      - db_network
+      - skratzsch-network
 
-volumes:
-  mongodb_data:
-  postgres_data:
+  mongo:
+    image: mongo:7.0.5
+    ports:
+      - "27017:27017"
+    networks:
+      - skratzsch-network
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - mongo
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - skratzsch-network
 
 networks:
-  db_network:
+  skratzsch-network:
     driver: bridge

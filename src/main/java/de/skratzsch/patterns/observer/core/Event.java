@@ -1,4 +1,4 @@
-package de.skratzsch.patterns.observer;
+package de.skratzsch.patterns.observer.core;
 
 /**
  * Marker interface for events in the Observer pattern.

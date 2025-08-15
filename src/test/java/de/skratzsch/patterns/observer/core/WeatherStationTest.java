@@ -1,6 +1,5 @@
-package de.skratzsch.patterns.observer;
+package de.skratzsch.patterns.observer.core;
 
-import de.skratzsch.patterns.observer.core.WeatherStation;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 

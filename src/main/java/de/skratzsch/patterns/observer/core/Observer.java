@@ -1,4 +1,4 @@
-package de.skratzsch.patterns.observer;
+package de.skratzsch.patterns.observer.core;
 
 /**
  * Functional interface for observers.

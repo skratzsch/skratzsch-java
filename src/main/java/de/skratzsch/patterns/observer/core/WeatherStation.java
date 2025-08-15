@@ -1,4 +1,6 @@
-package de.skratzsch.patterns.observer;
+package de.skratzsch.patterns.observer.core;
+
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +8,10 @@ import java.util.List;
 /**
  * Weather station that notifies observers about weather changes.
  */
+@Component
 public class WeatherStation {
     private final List<Observer<WeatherData>> observers = new ArrayList<>();
+    private String stationId;
     private double temperature;
     private double humidity;
     private double pressure;
@@ -32,7 +36,7 @@ public class WeatherStation {
      * Notifies all observers about new weather data.
      */
     private void notifyObservers() {
-        WeatherData weatherData = new WeatherData(temperature, humidity, pressure);
+        WeatherData weatherData = new WeatherData(stationId, temperature, humidity, pressure);
         observers.forEach(observer -> observer.onEvent(weatherData));
     }
 
@@ -42,7 +46,8 @@ public class WeatherStation {
      * @param humidity New humidity in percent.
      * @param pressure New air pressure in hPa.
      */
-    public void setMeasurements(double temperature, double humidity, double pressure) {
+    public void setMeasurements(String stationId, double temperature, double humidity, double pressure) {
+        this.stationId = stationId;
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;

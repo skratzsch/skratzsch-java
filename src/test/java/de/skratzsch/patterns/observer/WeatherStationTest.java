@@ -1,5 +1,6 @@
 package de.skratzsch.patterns.observer;
 
+import de.skratzsch.patterns.observer.core.WeatherStation;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -12,7 +13,7 @@ class WeatherStationTest {
         );
 
         assertDoesNotThrow(() ->
-                weatherStation.setMeasurements(20.0, 60.0, 1010.0)
+                weatherStation.setMeasurements("1",20.0, 60.0, 1010.0)
         );
     }
 }

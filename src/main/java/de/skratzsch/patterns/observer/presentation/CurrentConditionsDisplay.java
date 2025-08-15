@@ -1,4 +1,7 @@
-package de.skratzsch.patterns.observer;
+package de.skratzsch.patterns.observer.presentation;
+
+import de.skratzsch.patterns.observer.core.Observer;
+import de.skratzsch.patterns.observer.core.WeatherData;
 
 /**
  * Displays current weather conditions.

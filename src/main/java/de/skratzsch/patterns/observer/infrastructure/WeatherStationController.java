@@ -2,10 +2,11 @@ package de.skratzsch.patterns.observer.infrastructure;
 
 import de.skratzsch.patterns.observer.application.WeatherStationService;
 import de.skratzsch.patterns.observer.infrastructure.dto.WeatherDataDto;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import de.skratzsch.patterns.observer.infrastructure.dto.WeatherDataResponseDto;
+import de.skratzsch.patterns.observer.infrastructure.mongodb.WeatherDataDocument;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/weather")
@@ -24,5 +25,10 @@ public class WeatherStationController {
                 weatherDataDto.getHumidity(),
                 weatherDataDto.getPressure()
         );
+    }
+
+    @GetMapping("/history")
+    public List<WeatherDataResponseDto> getWeatherHistory() {
+        return weatherStationService.getWeatherHistory();
     }
 }

@@ -4,13 +4,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Weather station that notifies observers about weather changes.
  */
 @Component
 public class WeatherStation {
-    private final List<Observer<WeatherData>> observers = new ArrayList<>();
+    private final List<Observer<WeatherData>> observers = new CopyOnWriteArrayList<>();
     private String stationId;
     private double temperature;
     private double humidity;
